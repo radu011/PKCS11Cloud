@@ -90,6 +90,8 @@ softhsm2-util --import C:\Users\...\path\...\private_key.pem --slot 1270533568 -
 
 NOTE: 'id' from import command must be equal with Thumbprint value from certificate
 
+With PKCS11Admin you can add a new certificate to the token.
+
 ## Backup
 
 All of the tokens and their objects are stored in the location given by

@@ -12,7 +12,7 @@ Plugin written in PKCS#11 that uses the CSC standard to make remote signatures, 
 - /docs :
 - /include : include directory for CSCClient
 - /lib : lib directory for CSCClient
-- /Logs : some old logs for specific error cases
+- /LogsDebug : some old logs for specific error cases
 - /p8key : certificate and keys added to the token (will not be used by the user)
 - /plugins : dlls used for testing | dll logger | PKCS11Cloud dll version 1
 - /SoftHSMv2-x64 : modified SoftHSMv2 project to use CSC

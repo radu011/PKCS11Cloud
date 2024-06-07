@@ -109,7 +109,8 @@ SoftHSMCloud::~SoftHSMCloud()
 // PKCS #11 initialisation function
 CK_RV SoftHSMCloud::C_Initialize(CK_VOID_PTR pInitArgs)
 {
-	if (CSCInit("https://msign-test.transsped.ro/csc/v0/local") != CKR_OK)
+	//if (CSCInit("https://msign-test.transsped.ro/csc/v0/local") != CKR_OK)
+	if (CSCInit(Configuration::i()->getString("csc.server").c_str()) != CKR_OK)
 		return CKR_HOST_MEMORY;
 
 	// Set the state to initialised

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2010 SURFnet bv
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -10,7 +10,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
  * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -24,18 +24,18 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/*****************************************************************************
- Configuration.cpp
+ /*****************************************************************************
+  Configuration.cpp
 
- Loads the configuration and supports retrieval of configuration information
- *****************************************************************************/
+  Loads the configuration and supports retrieval of configuration information
+  *****************************************************************************/
 
 #include <string>
 #include <map>
 #include "Configuration.h"
 #include "log.h"
 
-// Initialise the one-and-only instance
+  // Initialise the one-and-only instance
 #ifdef HAVE_CXX11
 std::unique_ptr<Configuration> Configuration::instance(nullptr);
 #else
@@ -48,6 +48,7 @@ const struct config Configuration::valid_config[] = {
 	{ "objectstore.backend",	CONFIG_TYPE_STRING },
 	{ "log.level",			CONFIG_TYPE_STRING },
 	{ "slots.removable",		CONFIG_TYPE_BOOL },
+	{ "csc.server",		CONFIG_TYPE_STRING },
 	{ "",				CONFIG_TYPE_UNSUPPORTED }
 };
 

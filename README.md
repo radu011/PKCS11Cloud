@@ -38,6 +38,8 @@ You will find all you need in /plugins/SoftHSMv2-dll-v1
 
 2. In 'softhsm2.conf' file, on third line modify 'path to token folder' with absolute path to /tokens directory from same folder
 
+   Example: directories.tokendir = C:\Users\name\Desktop\Something\tokens
+
 3. Set the environment variable SOFTHSM2_CONF with the value indicating the path to the file 'softhsm2.conf'
 
 ## Installation

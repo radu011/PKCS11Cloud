@@ -8,9 +8,15 @@ public:
 	wxTextCtrl* passwordCtrl;
 
 	LoginDialog(const wxString& title)
-		: wxDialog(NULL, -1, title, wxDefaultPosition, wxSize(400, 250)) {
-		wxPanel* panel = new wxPanel(this, -1);
+		: wxDialog(NULL, -1, title, wxDefaultPosition, wxDefaultSize) {
+		
+		double scaleFactor = this->GetDPIScaleFactor();
+		scaleFactor = (scaleFactor == 1.25) ? 1.15 : scaleFactor;
+		scaleFactor = (scaleFactor == 1.50) ? 1.25 : scaleFactor;
+		this->SetSize(scaleFactor * 400, scaleFactor * 270);
 
+		wxPanel* panel = new wxPanel(this, -1);
+		
 		wxFont font = panel->GetFont();
 		font.SetPointSize(font.GetPointSize() + 10);
 		panel->SetFont(font);
@@ -40,9 +46,9 @@ public:
 		hbox3->Add(st3, 0, wxRIGHT, 8);
 		hbox3->Add(passwordCtrl, 1);
 
-		wxButton* btn1 = new wxButton(panel, wxID_OK, wxT("Ok"), wxDefaultPosition, wxSize(100, 40));
+		wxButton* btn1 = new wxButton(panel, wxID_OK, wxT("Ok"), wxDefaultPosition, wxSize(120, 40)); 
 		wxButton* btn2 = new wxButton(panel, wxID_CANCEL, wxT("Cancel"), wxDefaultPosition,
-			wxSize(100, 40));
+			wxSize(120, 40)); 
 
 		hbox4->Add(btn1, 0);
 		hbox4->Add(btn2, 0, wxLEFT, 5);
@@ -63,7 +69,13 @@ public:
 	wxTextCtrl* otpCodeWXTC;
 
 	OTPCodeDialog(const wxString& title)
-		: wxDialog(NULL, -1, title, wxDefaultPosition, wxSize(400, 150)) {
+		: wxDialog(NULL, -1, title, wxDefaultPosition, wxDefaultSize) {
+
+		double scaleFactor = this->GetDPIScaleFactor();
+		scaleFactor = (scaleFactor == 1.25) ? 1.15 : scaleFactor;
+		scaleFactor = (scaleFactor == 1.50) ? 1.25 : scaleFactor;
+		this->SetSize(scaleFactor * 400, scaleFactor * 150);
+
 		wxPanel* panel = new wxPanel(this, -1);
 
 		wxFont font = panel->GetFont();
@@ -99,7 +111,13 @@ public:
 class ErrorWarningDialog : public wxDialog {
 public:
 	ErrorWarningDialog(const wxString& title, const wxString& message, int dialogType)
-		: wxDialog(NULL, -1, title, wxDefaultPosition, wxSize(500, 300)) {
+		: wxDialog(NULL, -1, title, wxDefaultPosition, wxDefaultSize) {
+
+		double scaleFactor = this->GetDPIScaleFactor();
+		scaleFactor = (scaleFactor == 1.25) ? 1.15 : scaleFactor;
+		scaleFactor = (scaleFactor == 1.50) ? 1.25 : scaleFactor;
+		this->SetSize(scaleFactor * 500, scaleFactor * 300);
+
 		wxPanel* panel = new wxPanel(this, -1);
 
 		wxFont font = panel->GetFont();
@@ -146,27 +164,12 @@ wxDECLARE_APP(MyApp);
 
 size_t CSCWXGui_GetCreds(char** userID, char** certAlias, char** password)
 {
-	//*userID = (char*)malloc(sizeof(char) * 64);
-	//memset(*userID, '\0', 64);
-	//*certAlias = (char*)malloc(sizeof(char) * 64);
-	//memset(*certAlias, '\0', 64);
-	//*password = (char*)malloc(sizeof(char) * 64);
-	//memset(*password, '\0', 64);
-
 	wxApp::SetInstance(new MyApp());
 	wxEntryStart(0, nullptr);
 	wxTheApp->CallOnInit();
 
 	LoginDialog* dialog = new LoginDialog(wxT("Login - user credentials"));
 	if (dialog->ShowModal() == wxID_OK) {
-		//wxString usernameWXStr = dialog->usernameCtrl->GetValue();
-		//wxString certaliasWXStr = dialog->certaliasCtrl->GetValue();
-		//wxString passwordWXStr = dialog->passwordCtrl->GetValue();
-
-		//*userID = _strdup(usernameWXStr.utf8_str().data());
-		//*certAlias = _strdup(certaliasWXStr.utf8_str().data());
-		//*password = _strdup(passwordWXStr.utf8_str().data());
-
 		*userID = _strdup(dialog->usernameCtrl->GetValue().utf8_str().data());
 		*certAlias = _strdup(dialog->certaliasCtrl->GetValue().utf8_str().data());
 		*password = _strdup(dialog->passwordCtrl->GetValue().utf8_str().data());
